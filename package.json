@@ -1,0 +1,14 @@
+{
+  "name": "aem-note",
+  "version": "1.0.0",
+  "description": "AEM 6.5 On-Premise Developer Notes",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}
