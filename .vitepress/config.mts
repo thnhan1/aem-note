@@ -105,22 +105,5 @@ export default defineConfig({
       dark: 'github-dark',
     },
     lineNumbers: true,
-    languages: [
-      {
-        name: 'xpath',
-        scopeName: 'source.xpath',
-        aliases: ['xpath'],
-        patterns: [
-          { match: '(@[\\w:-]+)', name: 'variable.language.xpath' },
-          { match: '(\\/\\/|\\/|\\.|\\.\\.)', name: 'keyword.operator.xpath' },
-          { match: '(\\[|\\]|\\(|\\))', name: 'punctuation.xpath' },
-          { match: '\'[^\']*\'|"[^"]*"', name: 'string.quoted.xpath' },
-          { match: '\\b(and|or|not|div|mod)\\b', name: 'keyword.control.xpath' },
-          { match: '\\b[0-9]+(\\.[0-9]+)?\\b', name: 'constant.numeric.xpath' },
-          { match: '[\\w:-]+(?=\\()', name: 'support.function.xpath' },
-        ],
-        repository: {},
-      },
-    ],
   },
 })
