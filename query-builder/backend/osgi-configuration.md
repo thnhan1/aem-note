@@ -1,7 +1,5 @@
 # OSGi Configuration — AEM 6.5 On-Premise
 
-Nguồn: [Luca Nerlich — OSGi Configuration](https://lucanerlich.com/aem/backend/osgi-configuration/)
-
 ---
 
 ## 1. Quy ước lưu cấu hình trong code (bắt buộc cho production)
@@ -296,5 +294,4 @@ Chỉ cần fail build khi có PID không match (hoặc nằm ngoài whitelist) 
 
 ## Tham khảo
 
-- [OSGi Configuration](https://lucanerlich.com/aem/backend/osgi-configuration/) — Luca Nerlich
 - [OSGi Metatype Annotations](https://docs.osgi.org/specification/osgi.cmpn/7.0.0/service.metatype.html)

@@ -1,7 +1,5 @@
 # Sling Servlets — AEM 6.5 On-Premise
 
-> Nguồn: [Luca Nerlich — Servlets](https://lucanerlich.com/aem/backend/servlets/)
-
 ---
 
 ## 1. Cơ chế resolution của Sling Servlet
@@ -570,6 +568,5 @@ Nếu cần dùng path-based servlet trên AEM 6.5, thêm path được phép tr
 
 ## Tham Khảo
 
-- [Servlets](https://lucanerlich.com/aem/backend/servlets/) — Luca Nerlich
 - [Sling Servlet Annotations](https://sling.apache.org/documentation/the-sling-engine/servlets.html)
 - [Sling API Javadoc](https://sling.apache.org/apidocs/sling11/)

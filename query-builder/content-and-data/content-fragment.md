@@ -1,7 +1,5 @@
 # Content Fragments — AEM 6.5 On-Premise
 
-> Nguồn: [Luca Nerlich — Content Fragments](https://lucanerlich.com/aem/content/content-fragments/)
-
 ---
 
 ## 1. Content Fragment Là Gì
@@ -704,7 +702,6 @@ public List<Map<String, Object>> exportFragments(ResourceResolver resolver,
 
 ## Tham Khảo
 
-- [Content Fragments](https://lucanerlich.com/aem/content/content-fragments/) — Luca Nerlich
 - [Content Fragment Models (AEM 6.5)](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/assets/content-fragments/content-fragments-models) — Adobe Experience League
 - [Content Fragments API (Javadoc)](https://developer.adobe.com/experience-manager/reference-materials/6-5/javadoc/com/adobe/cq/dam/cfm/package-summary.html)
 - [Assets HTTP API](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/assets/extending/mac-api-assets) — Adobe Experience League

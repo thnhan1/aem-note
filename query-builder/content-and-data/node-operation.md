@@ -1,6 +1,5 @@
 # JCR Node Operations — AEM 6.5 On-Premise
 
-> Nguồn: [Luca Nerlich — JCR Node Operations](https://lucanerlich.com/aem/content/node-operations/)
 > Phạm vi: AEM 6.5 on-premise, Java 8, Apache Sling 10.x
 
 ---
@@ -442,7 +441,5 @@ try (ResourceResolver resolver = resolverFactory.getServiceResourceResolver(auth
 
 ## Tham Khảo
 
-- [JCR Node Operations](https://lucanerlich.com/aem/content/node-operations/) — Luca Nerlich
-- [Modify and Query the JCR](https://lucanerlich.com/aem/content/jcr/) — Luca Nerlich
 - [Sling Resource API (Javadoc)](https://sling.apache.org/apidocs/sling11/org/apache/sling/api/resource/ResourceResolver.html)
 - [JCR 2.0 Specification](https://developer.adobe.com/experience-manager/reference-materials/spec/jcr/2.0/index.html)

@@ -1,6 +1,5 @@
 # Groovy Console — AEM 6.5 On-Premise
 
-> Nguồn: [Luca Nerlich — Groovy Console](https://lucanerlich.com/aem/groovy-console/)
 > Package: [orbinson/aem-groovy-console](https://github.com/orbinson/aem-groovy-console)
 
 Groovy Console là công cụ chạy Groovy script trực tiếp trong AEM — thao tác JCR, gọi OSGi service, migration dữ liệu — không cần deploy code package.
@@ -644,6 +643,5 @@ Chỉ áp dụng cho author instance nội bộ có Dispatcher phía trước:
 
 ## Tham Khảo
 
-- [Groovy Console](https://lucanerlich.com/aem/groovy-console/) — Luca Nerlich
 - [orbinson/aem-groovy-console](https://github.com/orbinson/aem-groovy-console) — GitHub
 - [Sample scripts](https://github.com/orbinson/aem-groovy-console/tree/main/ui.content/src/main/content/jcr_root/conf/groovyconsole/scripts/samples)

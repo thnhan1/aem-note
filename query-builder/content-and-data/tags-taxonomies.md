@@ -1,7 +1,5 @@
 # Tags và Taxonomies — AEM 6.5 On-Premise
 
-> Nguồn: [Luca Nerlich — Tags and Taxonomies](https://lucanerlich.com/aem/content/tags-taxonomies/)
-
 ---
 
 ## 1. Tag Trong AEM Là Gì
@@ -547,6 +545,5 @@ if (oldTag != null) {
 
 ## Tham Khảo
 
-- [Tags and Taxonomies](https://lucanerlich.com/aem/content/tags-taxonomies/) — Luca Nerlich
 - [AEM Tagging Framework (6.5)](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/developing/platform/tagging/framework) — Adobe Experience League
 - [Tag API Javadoc](https://developer.adobe.com/experience-manager/reference-materials/6-5/javadoc/com/day/cq/tagging/package-summary.html)

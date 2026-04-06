@@ -1,6 +1,5 @@
 # Replication và Activation — AEM 6.5 On-Premise
 
-> Nguồn: [Luca Nerlich — Replication and Activation](https://lucanerlich.com/aem/content/replication-activation/)
 > Phạm vi: AEM 6.5 on-premise, kiến trúc Author → Publish → Dispatcher
 
 ---
@@ -300,6 +299,5 @@ Cấu hình nhầm khiến author replicate sang publish và publish replicate n
 
 ## Tham Khảo
 
-- [Replication and Activation](https://lucanerlich.com/aem/content/replication-activation/) — Luca Nerlich
 - [Replication (AEM 6.5)](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication) — Adobe Experience League
 - [Dispatcher Configuration](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration) — Adobe Experience League

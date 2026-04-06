@@ -1,7 +1,5 @@
 # AEM Workflows — AEM 6.5 On-Premise
 
-> Nguồn: [Luca Nerlich — Workflows](https://lucanerlich.com/aem/backend/workflows/)
-
 ---
 
 ## 1. Workflow Models và Instances
@@ -607,7 +605,6 @@ Tranh tao hang nghin workflow instances cho moi imported node.
 
 ## Tham Khao
 
-- [Workflows](https://lucanerlich.com/aem/backend/workflows/) — Luca Nerlich
 - [Administering Workflows (AEM 6.5)](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/workflows.html) — Adobe Experience League
 - [Developing and Extending Workflows (AEM 6.5)](https://experienceleague.adobe.com/docs/experience-manager-65/developing/extending-aem/extending-workflows/workflows.html) — Adobe Experience League
 - [Granite Workflow API Javadoc](https://developer.adobe.com/experience-manager/reference-materials/6-5/javadoc/com/adobe/granite/workflow/package-summary.html)

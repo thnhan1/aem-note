@@ -1,7 +1,5 @@
 # ACL và Permissions — AEM 6.5 On-Premise
 
-> Nguồn: [Luca Nerlich — ACLs and Permissions](https://lucanerlich.com/aem/infrastructure/acl-permissions/)
-
 ---
 
 ## 1. Permission Model — Cách ACL Hoạt Động
@@ -564,7 +562,6 @@ Trên AEM 6.5, ưu tiên Netcentric ACL Tool cho group management và ACL phức
 
 ## Tham Khảo
 
-- [ACLs and Permissions](https://lucanerlich.com/aem/infrastructure/acl-permissions/) — Luca Nerlich
 - [Netcentric ACL Tool](https://github.com/Netcentric/accesscontroltool) — GitHub
 - [Jackrabbit Oak Access Control](https://jackrabbit.apache.org/oak/docs/security/accesscontrol.html)
 - [AEM 6.5 User Administration](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security) — Adobe Experience League
