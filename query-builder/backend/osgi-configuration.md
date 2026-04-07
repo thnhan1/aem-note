@@ -1,4 +1,4 @@
-# OSGi Configuration — AEM 6.5 On-Premise
+# OSGi Configuration
 
 ---
 

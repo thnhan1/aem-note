@@ -23,7 +23,19 @@
 }
 
 :root {
-    --vp-font-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+    --vp-font-family-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
     --vp-font-family-base: 'Geist', sans-serif;
-    --vp-code-font-size: 0.9em;
+}
+
+/* inline code */
+:not(pre) > code {
+    font-family: var(--vp-font-family-mono) !important;
+}
+
+/* code blocks — Shiki wraps inside pre.vp-code > code > span.line > span */
+div[class*='language-'] pre,
+div[class*='language-'] pre code,
+div[class*='language-'] pre code .line,
+div[class*='language-'] pre code .line span {
+    font-family: var(--vp-font-family-mono) !important;
 }

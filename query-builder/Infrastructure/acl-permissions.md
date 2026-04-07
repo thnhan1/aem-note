@@ -1,10 +1,24 @@
 # ACL và Permissions — AEM 6.5 On-Premise
 
+> Phạm vi: AEM 6.5 on-premise, Java 8 (SP1+) / Java 11 (SP9+), Jackrabbit Oak
+
 ---
 
 ## 1. Permission Model — Cách ACL Hoạt Động
 
 AEM dùng Jackrabbit Oak access control layer. Mỗi thao tác đọc, ghi, xóa trên JCR đều được kiểm soát bởi Access Control List (ACL) — map principals (user, group) với privileges trên path cụ thể.
+
+```mermaid
+flowchart TD
+    REQ[Request: GET /content/mysite/page] --> OAK[Oak Security Layer]
+    OAK --> RESOLVE[Resolve principal\nuser + groups]
+    RESOLVE --> WALK[Walk từ / đến /content/mysite/page\nThu thập ACEs]
+    WALK --> EVAL{Evaluate ACEs\ntop-down trong rep:policy}
+    EVAL -->|Allow| ACCESS[Cho phép truy cập]
+    EVAL -->|Deny| BLOCK[Từ chối truy cập]
+    EVAL -->|No match| DEFAULT[Default: DENY]
+
+```
 
 Mỗi JCR node có thể có child node `rep:policy` chứa Access Control Entries (ACE):
 
@@ -348,6 +362,15 @@ public void readContent() {
 
 Nguyên tắc: **least privilege** — bắt đầu từ không có gì, thêm dần theo nhu cầu thực tế.
 
+```mermaid
+graph TD
+    SA[site-admins\njcr:all] -->|isMemberOf| CA[content-authors\nread + write + replicate]
+    SA -->|isMemberOf| DC[dam-contributors\nread + write DAM]
+    DP[dam-publishers\nread + replicate DAM] -->|isMemberOf| DC
+    CA -->|isMemberOf| CONTRIB[contributor\nOOTB AEM group]
+    TA[template-authors\nread + write /conf/*/templates]
+```
+
 | Group | Mục đích | Permissions cốt lõi |
 |---|---|---|
 | `content-authors` | Author và publish pages | read, write, replicate trên `/content/mysite` |
@@ -506,6 +529,14 @@ checkPrivilege("/content/mysite", "crx:replicate")
 checkPrivilege("/content/dam/mysite", "rep:write")
 ```
 
+### Permission checker endpoint
+
+AEM cung cấp endpoint kiểm tra permission nhanh:
+
+```
+GET /system/console/jcr?path=/content/mysite&user=content-author-user
+```
+
 ### Kiểm tra effective permissions trong CRXDE Lite
 
 1. Mở CRXDE Lite → `/content/mysite`
@@ -523,15 +554,37 @@ Repoinit không phải tiêu chuẩn chính trên AEM 6.5 như trên AEMaaCS, nh
 {
     "scripts": [
         "create service user myproject-content-reader with path system/myproject",
+        "",
         "set ACL for myproject-content-reader",
         "    allow jcr:read on /content/mysite",
+        "    allow jcr:read on /content/dam/mysite",
+        "end",
+        "",
+        "create group content-authors with path /home/groups/myproject",
+        "",
+        "set ACL for content-authors",
+        "    allow jcr:read,rep:write,crx:replicate on /content/mysite",
+        "    deny jcr:removeNode on /content/mysite",
         "    allow jcr:read on /content/dam/mysite",
         "end"
     ]
 }
 ```
 
-Trên AEM 6.5, ưu tiên Netcentric ACL Tool cho group management và ACL phức tạp. Dùng repoinit chỉ cho service user baseline.
+### Repoinit syntax reference
+
+| Statement | Ví dụ |
+|---|---|
+| Tạo service user | `create service user my-user with path system/myproject` |
+| Tạo group | `create group my-group with path /home/groups/myproject` |
+| Thêm vào group | `add content-authors to group myproject-super-authors` |
+| Set ACL | `set ACL for principal-name` ... `end` |
+| Allow | `allow jcr:read on /content/mysite` |
+| Deny | `deny rep:write on /content/mysite` |
+| Glob restriction | `allow jcr:read on /content restriction(rep:glob,*/jcr:content*)` |
+| Tạo path | `create path /content/mysite(sling:OrderedFolder)` |
+
+Trên AEM 6.5, ưu tiên Netcentric ACL Tool cho group management và ACL phức tạp. Dùng repoinit cho service user baseline và các path initialization.
 
 ---
 
@@ -557,6 +610,9 @@ Trên AEM 6.5, ưu tiên Netcentric ACL Tool cho group management và ACL phức
 | `rep:glob` match quá rộng | Test glob cẩn thận; empty string `""` chỉ match đúng node đó |
 | Permissions đúng trên Author nhưng sai trên Publish | ACL phải được set cho cả publish-side groups; kiểm tra CUG có bật trên Publish |
 | Repoinit script fail silent | Kiểm tra `error.log` sau deployment cho repoinit execution errors |
+| `jcr:all` trên `/content` gán cho non-admin group | Quá rộng — chỉ gán `jcr:all` trên site-specific path (`/content/mysite`) |
+| ACL Tool YAML dùng `actions` thay vì `privileges` | `actions` là legacy (CRX2), luôn dùng `privileges` cho Oak |
+| Service user access DAM rendition nhưng thiếu read trên parent | Phải có `jcr:read` trên toàn bộ ancestor path từ `/content/dam` trở xuống |
 
 ---
 

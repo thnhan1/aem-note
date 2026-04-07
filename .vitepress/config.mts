@@ -1,15 +1,14 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
-// Default to root so Netlify custom domains work out of the box.
-// If you still deploy under a subpath (e.g. GitHub Pages), set VITEPRESS_BASE.
-const siteBase = process.env.VITEPRESS_BASE ?? '/'
-
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: 'AEM Developer Notes',
-  description: 'AEM 6.5 On-Premise — Technical notes for backend developers',
+  description: 'AEM 6.5 On-Premise — Technical notes for backend developers translated from Luca Nerlich Blog',
   lang: 'vi',
 
-  base: siteBase,
+  base: '/aem-note/',
+
+  lastUpdated: true,
 
   ignoreDeadLinks: [
     // localhost AEM links trong các file note
@@ -28,19 +27,31 @@ export default defineConfig({
       { text: 'Guide', link: '/guide' },
     ],
 
+
+
     sidebar: [
+      {
+        text: 'Groovy Console',
+        collapsed: false,
+        items: [
+          { text: 'Groovy Console', link: '/query-builder/groovy-console/groovy-console' },
+        ],
+      },
       {
         text: 'Content & Data',
         collapsed: false,
         items: [
           { text: 'AEM Query Builder', link: '/query-builder/content-and-data/1.aem-query-builder' },
-          { text: 'Query Builder Notes', link: '/query-builder/content-and-data/2.query-builder-note' },
           { text: 'Node Operations', link: '/query-builder/content-and-data/node-operation' },
-          { text: 'Replication & Activation', link: '/query-builder/content-and-data/replication-activation' },
+          { text: 'Query Builder Notes', link: '/query-builder/content-and-data/2.query-builder-note' },
           { text: 'Content Fragments', link: '/query-builder/content-and-data/content-fragment' },
+          { text: 'Headless GraphQL', link: '/query-builder/content-and-data/graphql' },
+          { text: 'Replication & Activation', link: '/query-builder/content-and-data/replication-activation' },
+          { text: 'Multi-Site Manager (MSM)', link: '/query-builder/content-and-data/multi-site-manager-msm' },
+          { text: 'Modify & Query JCR', link: '/query-builder/content-and-data/modify-and-query-the-jcr' },
           { text: 'Tags & Taxonomies', link: '/query-builder/content-and-data/tags-taxonomies' },
-
-        
+          { text: 'i18n & Translation', link: '/query-builder/content-and-data/i18n-translation' },
+          { text: 'Experience Fragments', link: '/query-builder/content-and-data/experience-fragment' },
         ],
       },
       {
@@ -50,38 +61,31 @@ export default defineConfig({
           { text: 'OSGi Configuration', link: '/query-builder/backend/osgi-configuration' },
           { text: 'Servlets', link: '/query-builder/backend/servlets' },
           { text: 'Workflows', link: '/query-builder/backend/workflows' },
-          { text: 'ACL & Permissions', link: '/query-builder/backend/acl-permissions' },
         ],
       },
-      {
-        text: 'Groovy Console',
-        collapsed: false,
-        items: [
-          { text: 'Groovy Console', link: '/query-builder/groovy-console/groovy-console' },
-        ],
-      },
+
       {
         text: 'UI',
         collapsed: false,
         items: [
           { text: 'Coral UI', link: '/query-builder/ui/coral-ui' },
+          { text: 'Extending Responsive Grid', link: '/query-builder/ui/extending-responsive-grid' },
         ],
       },
       {
-        text: 'Meta',
+        text: 'Infrastructure',
+        collapsed: false,
+        items: [
+          { text: 'ACLs and Permissions', link: '/query-builder/infrastructure/acl-permissions' },
+        ],
+      },
+      {
+        text: 'Guide',
         collapsed: false,
         items: [
           { text: 'Hướng dẫn thêm note', link: '/guide' },
         ],
       },
-
-      {
-        text: 'Demo',
-        collapsed: false,
-        items: [
-          { text: 'nhan', link: '/query-builder/demo/nhan'},
-        ]
-      }
     ],
 
     search: {
@@ -111,13 +115,18 @@ export default defineConfig({
       prev: 'Previous',
       next: 'Next',
     },
+
   },
 
   markdown: {
     theme: {
       light: 'github-light',
-      dark: 'dracula-soft',
+      dark: 'one-dark-pro',
     },
     lineNumbers: true,
   },
-})
+
+  mermaid: {
+    theme: 'neutral',
+  },
+}))

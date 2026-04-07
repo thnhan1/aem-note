@@ -3,15 +3,15 @@ layout: home
 
 hero:
   name: "AEM Developer Notes"
-  text: "AEM 6.5 On-Premise"
-  tagline: Technical notes for backend developers — Query Builder, JCR, OSGi, Servlets, Groovy Console và hơn thế nữa.
+  text: "AEM 6.5 On-Premise Note"
+  tagline: Nhan Take Note về AEM, Apache Sling, Query Builder, JCR, OSGi, Servlets, Groovy Console và hơn thế nữa.
   actions:
     - theme: brand
       text: Query Builder
       link: /query-builder/content-and-data/1.aem-query-builder
     - theme: alt
-      text: Groovy Console
-      link: /query-builder/groovy-console/groovy-console
+      text: Không thể click tôi ;)
+      link: /#
 
 features:
   - icon: 🔍
@@ -25,9 +25,9 @@ features:
     link: /query-builder/backend/osgi-configuration
 
   - icon: 🖥️
-    title: Groovy Console
-    details: Script templates, bulk operations, DRY_RUN pattern, scheduling và CI/CD integration.
-    link: /query-builder/groovy-console/groovy-console
+    title: Tools
+    details: Tools for development AEM
+    link: /query-builder/tools/groovy-console
 
   - icon: 🎨
     title: UI

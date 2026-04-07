@@ -1,7 +1,4 @@
-# JCR Node Operations — AEM 6.5 On-Premise
-
-> Phạm vi: AEM 6.5 on-premise, Java 8, Apache Sling 10.x
-
+# JCR Node Operations
 ---
 
 ## 1. Hai API Làm Việc Với JCR Node
@@ -48,7 +45,7 @@ public void createNode(Session session) throws Exception {
 }
 ```
 
-> **Lưu ý AEM 6.5:** `ResourceResolver` và `Session` lấy từ service user, không dùng admin session trong production. Khai báo service user mapping trong `/etc/map` hoặc OSGi config `org.apache.sling.serviceusermapping`.
+> **Lưu ý AEM 6.5:** `ResourceResolver` và `Session` lấy từ service user, không dùng admin session trong production. Khai báo service user mapping trong OSGi config `org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended~myproject.cfg.json` dưới `ui.config`.
 
 ---
 
@@ -267,10 +264,23 @@ private Resource findInheritedConfig(Page page) {
 ### Duyệt đệ quy toàn bộ subtree
 
 ```java
+// Java 11+: String.repeat() có sẵn
 public void traverseRecursively(Resource resource, int depth) {
     String indent = "  ".repeat(depth);
-    String type = resource.getValueMap().get("jcr:primaryType", "unknown");
+    String type   = resource.getValueMap().get("jcr:primaryType", "unknown");
     log.info("{}{} [{}]", indent, resource.getName(), type);
+
+    for (Resource child : resource.getChildren()) {
+        traverseRecursively(child, depth + 1);
+    }
+}
+
+// Java 8: dùng StringBuilder thay thế String.repeat()
+public void traverseRecursively(Resource resource, int depth) {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < depth; i++) sb.append("  ");
+    String type = resource.getValueMap().get("jcr:primaryType", "unknown");
+    log.info("{}{} [{}]", sb, resource.getName(), type);
 
     for (Resource child : resource.getChildren()) {
         traverseRecursively(child, depth + 1);
