@@ -1,0 +1,14 @@
+[build]
+  command = "npm run docs:build"
+  publish = ".vitepress/dist"
+
+[[redirects]]
+  from = "/"
+  to = "/aem-note/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aem-note/*"
+  to = "/:splat"
+  status = 200
