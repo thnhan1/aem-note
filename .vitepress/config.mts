@@ -1,7 +1,8 @@
 import { defineConfig } from 'vitepress'
 
-const isNetlify = process.env.NETLIFY === 'true'
-const siteBase = process.env.VITEPRESS_BASE ?? (isNetlify ? '/' : '/aem-note/')
+// Default to root so Netlify custom domains work out of the box.
+// If you still deploy under a subpath (e.g. GitHub Pages), set VITEPRESS_BASE.
+const siteBase = process.env.VITEPRESS_BASE ?? '/'
 
 export default defineConfig({
   title: 'AEM Developer Notes',
