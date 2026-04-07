@@ -39,6 +39,8 @@ export default defineConfig({
           { text: 'Replication & Activation', link: '/query-builder/content-and-data/replication-activation' },
           { text: 'Content Fragments', link: '/query-builder/content-and-data/content-fragment' },
           { text: 'Tags & Taxonomies', link: '/query-builder/content-and-data/tags-taxonomies' },
+
+        
         ],
       },
       {
@@ -72,6 +74,14 @@ export default defineConfig({
           { text: 'Hướng dẫn thêm note', link: '/guide' },
         ],
       },
+
+      {
+        text: 'Demo',
+        collapsed: false,
+        items: [
+          { text: 'nhan', link: '/query-builder/demo/nhan'},
+        ]
+      }
     ],
 
     search: {
@@ -106,7 +116,7 @@ export default defineConfig({
   markdown: {
     theme: {
       light: 'github-light',
-      dark: 'github-dark',
+      dark: 'dracula-soft',
     },
     lineNumbers: true,
   },
