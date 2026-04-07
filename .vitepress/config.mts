@@ -1,11 +1,14 @@
 import { defineConfig } from 'vitepress'
 
+const isNetlify = process.env.NETLIFY === 'true'
+const siteBase = process.env.VITEPRESS_BASE ?? (isNetlify ? '/' : '/aem-note/')
+
 export default defineConfig({
   title: 'AEM Developer Notes',
   description: 'AEM 6.5 On-Premise — Technical notes for backend developers',
   lang: 'vi',
 
-  base: '/aem-note/',
+  base: siteBase,
 
   ignoreDeadLinks: [
     // localhost AEM links trong các file note
