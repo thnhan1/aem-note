@@ -3,12 +3,6 @@
   publish = ".vitepress/dist"
 
 [[redirects]]
-  from = "/"
-  to = "/aem-note/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/aem-note/*"
+  from = "/*"
   to = "/:splat"
   status = 200
