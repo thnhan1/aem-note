@@ -14,30 +14,28 @@ AEM phân biệt hai loại đa ngôn ngữ:
 
 ```mermaid
 flowchart TD
-    subgraph "UI i18n"
-        A[HTL / Java code] -->|key lookup| B[Sling ResourceBundle]
-        B --> C[/apps/myproject/i18n/en.json]
-        B --> D[/apps/myproject/i18n/de.json]
-        B --> E[/apps/myproject/i18n/fr.json]
+    subgraph UI_i18n ["UI i18n (Static Labels)"]
+        A[HTL / Java Code] -->|Key Lookup| B[Sling ResourceBundle]
+        B --> C["/apps/myproject/i18n/en.json"]
+        B --> D["/apps/myproject/i18n/de.json"]
+        B --> E["/apps/myproject/i18n/fr.json"]
     end
 
-    subgraph "Content Translation"
-        F[Source: /content/mysite/en] -->|TIF workflow| G[/content/mysite/de]
-        F -->|TIF workflow| H[/content/mysite/fr]
-        G --> I[Translation Provider\nSDL / RWS / Human]
+    subgraph Content_Translation ["Content Translation (Dynamic Content)"]
+        F["Source: /content/mysite/en"] -->|TIF Workflow| G["/content/mysite/de"]
+        F -->|TIF Workflow| H["/content/mysite/fr"]
+        G --> I["Translation Provider (SDL / RWS / Human)"]
         H --> I
     end
 
-    subgraph "Locale Resolution"
-        J[Request] --> K{jcr:language\non page?}
-        K -->|yes| L[Use page locale]
-        K -->|no| M[Walk up ancestors\nuntil found]
+    subgraph Locale_Resolution ["Locale Resolution"]
+        J[Incoming Request] --> K{jcr:language on page?}
+        K -- Yes --> L[Use Page Locale]
+        K -- No --> M["Walk Up Ancestors until found"]
         M --> L
         L --> B
     end
 ```
-
----
 
 ## Phần 1 — UI String Translation (i18n Dictionaries)
 
