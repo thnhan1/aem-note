@@ -13,28 +13,21 @@ AEM phân biệt hai loại đa ngôn ngữ:
 ## Kiến Trúc Tổng Quan
 
 ```mermaid
-flowchart TD
-    subgraph UI_i18n ["UI i18n (Static Labels)"]
-        A[HTL / Java Code] -->|Key Lookup| B[Sling ResourceBundle]
-        B --> C["/apps/myproject/i18n/en.json"]
-        B --> D["/apps/myproject/i18n/de.json"]
-        B --> E["/apps/myproject/i18n/fr.json"]
-    end
+graph TD
+    A[Trang ngôn ngữ nguồn] --> B[Khung tích hợp dịch thuật]
+    B --> C["Nhà cung cấp dịch (SDL, Lionbridge, ...)"]
+    C --> D[Trang ngôn ngữ đích]
+    
+    B -.-> E[Dịch nội dung]
+    E --> B
+```
 
-    subgraph Content_Translation ["Content Translation (Dynamic Content)"]
-        F["Source: /content/mysite/en"] -->|TIF Workflow| G["/content/mysite/de"]
-        F -->|TIF Workflow| H["/content/mysite/fr"]
-        G --> I["Translation Provider (SDL / RWS / Human)"]
-        H --> I
-    end
-
-    subgraph Locale_Resolution ["Locale Resolution"]
-        J[Incoming Request] --> K{jcr:language on page?}
-        K -- Yes --> L[Use Page Locale]
-        K -- No --> M["Walk Up Ancestors until found"]
-        M --> L
-        L --> B
-    end
+```mermaid
+graph TD
+    A["UI Strings (i18n dictionaries)"] --> B[i18n dictionary]
+    
+    B --> C["HTML: ${'key' @ i18n}"]
+    B --> D["Java: I18n.get()"]
 ```
 
 ## Phần 1 — UI String Translation (i18n Dictionaries)
